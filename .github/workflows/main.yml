@@ -1,0 +1,24 @@
+name: Scheduled Node.js Function1
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Set your desired cron schedule (midnight every day)
+
+jobs:
+  run-function:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14  # Use the Node.js version you need
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Node.js function
+        run: node myFunction.js
